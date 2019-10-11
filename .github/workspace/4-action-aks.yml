@@ -1,0 +1,27 @@
+name: 4-action-azure-aks
+
+on:
+  push:
+    branches:
+    - dev
+    - master
+    paths:
+    - azure/arm/*
+    - .github/*
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: azure/actions/login@master
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: bash DEPLOY.sh
+      env:
+        AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+        GITHUB_SHA: ${{ github.sha }}
+      run: |
+        cd $GITHUB_WORKSPACE/
+        bash azure/arm/DEPLOY.sh
+        
