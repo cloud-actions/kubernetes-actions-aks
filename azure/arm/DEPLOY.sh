@@ -7,15 +7,13 @@ LOCATION='eastus'
 # SP_CLIENT_ID
 # SP_CLIENT_SECRET
 
-SUBSCRIPTION_ID=$(az account show | jq -r .id)
-DEPLOYMENT_NAME="191000-aks-1"
-AKS_NAME="aks1"
-
 # az group deployment create --resource-group $RESOURCE_GROUP \
 #    --template-file empty.json \
 #    --mode 'Complete'
 
 # aks
+AKS_NAME="aks1"
+DEPLOYMENT_NAME="191000-aks-1"
 az group deployment create --name $DEPLOYMENT_NAME --resource-group $RESOURCE_GROUP  \
     --template-uri https://raw.githubusercontent.com/asw101/cloud-snips/master/arm/aks/azuredeploy.json \
     --mode 'Incremental' \
