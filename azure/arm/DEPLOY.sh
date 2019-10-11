@@ -5,9 +5,6 @@ RESOURCE_GROUP='191000-cloud-actions'
 LOCATION='eastus'
 
 SUBSCRIPTION_ID=$(az account show | jq -r .id)
-SP_NAME=$(echo $AZURE_CREDENTIALS | jq -r .name)
-SP_CLIENT_ID=$(echo $AZURE_CREDENTIALS | jq -r .appId)
-SP_CLIENT_SECRET=$(echo $AZURE_CREDENTIALS | jq -r .password)
 DEPLOYMENT_NAME="191000-aks-1"
 AKS_NAME="aks1"
 
