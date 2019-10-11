@@ -18,7 +18,7 @@ AKS_NAME="aks1"
 # aks
 az group deployment create --name $DEPLOYMENT_NAME --resource-group $RESOURCE_GROUP  \
     --template-uri https://raw.githubusercontent.com/asw101/cloud-snips/master/arm/aks/azuredeploy.json \
-    --mode 'Complete' \
+    --mode 'Incremental' \
     --parameters \
     clusterName=$AKS_NAME \
     location=$LOCATION \
@@ -31,4 +31,5 @@ az group deployment create --name $DEPLOYMENT_NAME --resource-group $RESOURCE_GR
 # acr
 DEPLOYMENT_NAME="191000-acr-1"
 az group deployment create --name $DEPLOYMENT_NAME --resource-group $RESOURCE_GROUP \
-    --template-uri https://raw.githubusercontent.com/asw101/cloud-snips/master/arm/acr/azuredeploy.json
+    --template-uri https://raw.githubusercontent.com/asw101/cloud-snips/master/arm/acr/azuredeploy.json \
+    --mode 'Incremental'
