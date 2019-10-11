@@ -23,9 +23,7 @@ jobs:
         GITHUB_SHA: ${{ github.sha }}
       run: |
         cd $GITHUB_WORKSPACE/
-        export SP_NAME=$(echo $AZURE_CREDENTIALS | jq -r .name)
-        export SP_CLIENT_ID=$(echo $AZURE_CREDENTIALS | jq -r .appId)
-        export SP_CLIENT_SECRET=$(echo $AZURE_CREDENTIALS | jq -r .password)
-        echo "SP_NAME: ${SP_NAME}"
+        export SP_CLIENT_ID=$(echo $AZURE_CREDENTIALS | jq -r .clientId)
+        export SP_CLIENT_SECRET=$(echo $AZURE_CREDENTIALS | jq -r .clientSecret)
         bash azure/arm/DEPLOY.sh
         

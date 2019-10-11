@@ -3,6 +3,9 @@
 # variables
 RESOURCE_GROUP='191000-cloud-actions'
 LOCATION='eastus'
+# via: .github/workflows-4-action-azure-aks.yml
+# SP_CLIENT_ID
+# SP_CLIENT_SECRET
 
 SUBSCRIPTION_ID=$(az account show | jq -r .id)
 DEPLOYMENT_NAME="191000-aks-1"
