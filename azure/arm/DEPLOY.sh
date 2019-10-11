@@ -15,6 +15,7 @@ AKS_NAME="aks1"
 #    --template-file empty.json \
 #    --mode 'Complete'
 
+# aks
 az group deployment create --name $DEPLOYMENT_NAME --resource-group $RESOURCE_GROUP  \
     --template-uri https://raw.githubusercontent.com/asw101/cloud-snips/master/arm/aks/azuredeploy.json \
     --mode 'Complete' \
@@ -26,3 +27,8 @@ az group deployment create --name $DEPLOYMENT_NAME --resource-group $RESOURCE_GR
     agentCount=1 \
     agentVMSize=Standard_B2s \
     | jq -c .
+
+# acr
+DEPLOYMENT_NAME="191000-acr-1"
+az group deployment create --name $DEPLOYMENT_NAME --resource-group $RESOURCE_GROUP \
+    --template-uri https://raw.githubusercontent.com/asw101/cloud-snips/master/arm/acr/azuredeploy.json
